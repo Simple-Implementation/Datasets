@@ -12,6 +12,8 @@
 
 - Download Site
 > - https://cocodataset.org/#download
+- Data Format
+> - https://cocodataset.org/#format-data
 
 # CIFAR-10
 
