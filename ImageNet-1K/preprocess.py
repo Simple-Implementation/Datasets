@@ -16,7 +16,6 @@ def parse():
     
     args = parser.parse_args()
 
-
     return args
 
 def get_mapping_dict(mapping_text_path):
