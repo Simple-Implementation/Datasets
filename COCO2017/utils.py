@@ -2,6 +2,7 @@ import os
 from colorama import Fore, Style
 
 from pycocotools.coco import COCO
+from pycocotools.mask import decode, frPyObjects
 
 FONT = {
     "r": Fore.RED,
@@ -112,6 +113,19 @@ def get_image_info(coco, image_ids):
     image_info = coco.loadImgs(image_ids)
 
     return image_info
+
+def get_mask_from_rle(segmentation):
+
+    '''
+        어노테이션의 RLE를 이진 마스크로 변환합니다.
+    '''
+
+    height = segmentation['size'][0]
+    width = segmentation['size'][1]
+    rle = frPyObjects(segmentation, height, width)
+    binary_mask = decode(rle)
+
+    return binary_mask
 
 def get_image_path(image_id, root_path):
 
