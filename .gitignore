@@ -6,3 +6,5 @@
 *.txt
 *.csv
 *.pyc
+
+Korean_Wikipedia/wikiextractor-3.0.4/*
