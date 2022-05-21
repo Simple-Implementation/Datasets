@@ -64,8 +64,8 @@ def object_detection(df, roots, mode='valid'):
         ]
         # 2차원 리스트를 Transpose
         class_list = list(zip(*class_list))
-        categories = "^".join(class_list[0])
-        super_categories = "^".join(class_list[1])
+        categories = " ".join([cat.replace(" ","_") for cat in class_list[0]])
+        super_categories = " ".join([sup_cat.replace(" ","_") for sup_cat in class_list[1]])
 
         all_top_left_x = " ".join([str(annot['bbox'][0]) for annot in annotations])
         all_top_left_y = " ".join([str(annot['bbox'][1]) for annot in annotations])
@@ -140,8 +140,8 @@ def semantic_segmentation(df, roots, mode='valid'):
         # 2차원 리스트를 Transpose
         class_list = list(zip(*class_list))
         category_ids = [annot['category_id'] for annot in annotations]
-        categories = "^".join(class_list[0])
-        super_categories = "^".join(class_list[1])
+        categories = " ".join([cat.replace(" ","_") for cat in class_list[0]])
+        super_categories = " ".join([sup_cat.replace(" ","_") for sup_cat in class_list[1]])
 
         image_info = get_image_info(coco, image_id)[0]
         image_width = image_info['width']
