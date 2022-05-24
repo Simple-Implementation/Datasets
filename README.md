@@ -12,6 +12,11 @@ $ python ImageNet-1K/preprocess.py \
     --dataframe-output-path ImageNet-1K/dataframes
 ```
 
+# ImageNet 21K
+
+- Download Site
+> - https://image-net.org/download-images.php
+
 # Pascal VOC 2012
 
 - Download Site
