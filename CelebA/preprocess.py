@@ -32,7 +32,7 @@ def parse_landmark_data(image_root,landmark_file):
     with open(landmark_file, 'r') as f:
         num_data = int(f.readline())
         cols = f.readline().strip("\n").split(" ")
-        cols = ['filename'] + cols
+        cols = ['path'] + cols
         data = [[] for _ in range(len(cols))]
         while True:
             line = f.readline()
@@ -46,7 +46,7 @@ def parse_landmark_data(image_root,landmark_file):
     for col, d in zip(cols,data):
         df[col] = d
 
-    df['filename'] = df['filename'].apply(lambda x: os.path.join(image_root,x))
+    df['path'] = df['path'].apply(lambda x: os.path.join(image_root,x))
 
     return df
 
