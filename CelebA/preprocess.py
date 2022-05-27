@@ -69,12 +69,13 @@ def parse_landmark_data(image_root,landmark_file,partition_file):
     valid_df = df[df['category']==1].drop('category', axis=1).reset_index(drop=True)
     test_df = df[df['category']==2].drop('category', axis=1).reset_index(drop=True)
 
-    return train_df, valid_df, test_df
+    return df, train_df, valid_df, test_df
 
 def main(args):
 
     os.makedirs(args.dataframe_output_path,exist_ok=True)
-    train_df, valid_df, test_df = parse_landmark_data(args.image_root_path,args.landmark_data_path,args.partition_data_path)
+    total_df, train_df, valid_df, test_df = parse_landmark_data(args.image_root_path,args.landmark_data_path,args.partition_data_path)
+    total_df.to_csv(f"{args.dataframe_output_path}/total.csv",index=0)
     train_df.to_csv(f"{args.dataframe_output_path}/train.csv",index=0)
     valid_df.to_csv(f"{args.dataframe_output_path}/valid.csv",index=0)
     test_df.to_csv(f"{args.dataframe_output_path}/test.csv",index=0)
