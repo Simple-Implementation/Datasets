@@ -32,12 +32,14 @@ def parse_landmark_data(image_root,landmark_file,partition_file):
 
     filenames = list()
     categories = list()
+    ext = '.png'
 
     with open(partition_file, 'r') as f:
         while True:
             line = f.readline()
             if not line: break
             filename, category = line.strip("\n").split(" ")
+            filename = filename.split(".")[0]+ext
             filenames.append(filename)
             categories.append(int(category))
 
