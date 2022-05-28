@@ -39,7 +39,7 @@ def parse_landmark_data(image_root,landmark_file,partition_file):
             line = f.readline()
             if not line: break
             filename, category = line.strip("\n").split(" ")
-            filename = filename.split(".")[0]+ext
+            filename = filename.split(".")[0] + ext
             filenames.append(filename)
             categories.append(int(category))
 
@@ -57,6 +57,7 @@ def parse_landmark_data(image_root,landmark_file,partition_file):
             if not line: break
             line = line.strip("\n").split(" ")
             line = list(filter(None,line))
+            line[0] = line[0].split(".")[0] + ext
             for idx, d in enumerate(line):
                 data[idx].append(d)
 
